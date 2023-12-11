@@ -71,3 +71,33 @@ gør vi strålen lidt længere igen.
 Dette er meget ineffektivt, da det kræver rigtigt mange increments. Det er også muligt, at
 hvis det er hjørnet af en celle, så springer den over væggen, uden at vi overhovedet ser at
 den skærer.
+![Linear](linear.png)
+Hvis de grønne prikker er hvert increment, den blå linje vores stråle, og de røde celler vægge,
+så vil vi ikke se at strålen rammer væggen, da increment sprænger væggen over.
+### • Nearest-neighbour algorithm
+Her finder vi ud af hvilke linjer vores stråle skærer, ved at bruge en nearest-neighbour
+algorithm. Denne blev ikke undersøgt meget
+### • ***Digital Differential Analyser***
+Dette er en noget mere kompliceret form for matematik, end de to andre, som bruger
+differentiering til at finde en hældning af linjen i x- og y-retning. Den kan så finde ud,
+angående hvilken hældning der er størst, om den næste celle linjen skærer kommer til at være
+i x-retning eller y-retning. Siden at den kun har brug for at udregne overgangene mellem
+vores celler, kræver det meget mindre regnekraft end de to andre metoder. Når den er nået til
+en ny celle, tjekker den om cellen indeholder en væg. Hvis cellen indeholder en væg, bruger
+vi længden af strålen til cellen for at udregne størrelsen af væggen på skærmen. Det var
+denne metode jeg valgte at bruge.
+# Funktionsbeskrivelse
+Overordnet er programmet et ”spil”, hvor man kan samle blokke op, og placere dem igen.
+Programmet er delt op i 5 hovedfunktioner: Menu, UI, 3D, 2D og keyHandler.
+Menuen bruges til at vælge om man vil have uendelige blokke.
+UI bruges til at vise, hvor mange blokke man har, og vise hvilken blok man har valgt.
+2D er den nederste halvdel af skærmen, og bruges til at vise et 2D ”minimap” af banen og
+spillerens placering.
+3D er den øverste halvdel af skærmen, og er der hvor raytracing indgår.
+keyHandler bruges til at styre kameraet frem og tilbage, og rotere venstre og højre. Den bruges
+også til at placere, fjerne og skifte blokke.
+Controls er således:
+W,A,S,D: Kamera
+Q, E: Skift Blok
+Space: Placer blok
+Shift: Fjern blok
